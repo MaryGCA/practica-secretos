@@ -1,10 +1,11 @@
-// app.js - Aplicación de ejemplo
+// app.js - Aplicación de ejemplo (versión segura)
+require('dotenv').config();
 const express = require('express');
 const app = express();
 
-// ERROR COMÚN: credenciales escritas directamente en el código
-const DB_PASSWORD = "SuperSecreta123!";
-const STRIPE_KEY = "sk_live_4eC39HqLyjWDarjtT1zdp7dc";
+// Credenciales leídas desde variables de entorno (archivo .env)
+const DB_PASSWORD = process.env.DB_PASSWORD;
+const STRIPE_KEY = process.env.STRIPE_KEY;
 
 app.get('/', (req, res) => {
   res.send('Hola mundo');
